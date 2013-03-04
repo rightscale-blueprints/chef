@@ -1,0 +1,46 @@
+{
+  "name": "chef",
+  "description": "Installs/Configures chef",
+  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
+  "maintainer": "Chris Fordham",
+  "maintainer_email": "chris@xhost.com.au",
+  "license": "Apache 2.0",
+  "platforms": {
+  },
+  "dependencies": {
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+    "chef/install_method": {
+      "display_name": "Chef install method",
+      "description": "The method to install Chef with (omnibus or package).",
+      "default": "omnibus",
+      "recipes": [
+        "chef::install"
+      ],
+      "choice": [
+        "omnibus",
+        "package"
+      ],
+      "calculated": false,
+      "type": "string",
+      "required": "optional"
+    }
+  },
+  "groupings": {
+  },
+  "recipes": {
+    "chef::default": "Includes the chef::install recipe.",
+    "chef::install": "Installs Chef by the desired install method (default=omnibus)."
+  },
+  "version": "0.1.0"
+}
