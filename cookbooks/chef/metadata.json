@@ -112,7 +112,10 @@
   },
   "recipes": {
     "chef::default": "Includes the chef::install recipe.",
-    "chef::install": "Installs Chef by the desired install method (default=omnibus)."
+    "chef::install": "Installs Chef by the desired install method (default=omnibus).",
+    "chef::configure_chef_solo": "Configures Chef Solo.",
+    "chef::rightscale_bootstrap": "Bootstraps and runs Chef Solo on a RightScale Server.",
+    "chef::run_chef_solo": "Runs Chef Solo."
   },
   "version": "0.1.0"
 }
