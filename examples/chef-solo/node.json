@@ -1,3 +1,3 @@
 {
-  "run_list": [ "chef" ]
+  "run_list": [ "chef", "chef::configure_chef_solo", "chef::run_chef_solo" ]
 }
