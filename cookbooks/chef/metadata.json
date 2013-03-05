@@ -68,7 +68,7 @@
       "default": "righscale",
       "recipes": [
         "chef::default",
-        "chef::configure"
+        "chef::configure_chef_solo"
       ],
       "choice": [
 
