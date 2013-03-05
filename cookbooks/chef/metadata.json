@@ -67,7 +67,8 @@
       "description": "The Chef platform this cookbook is used in.",
       "default": "righscale",
       "recipes": [
-        "chef::default"
+        "chef::default",
+        "chef::configure"
       ],
       "choice": [
 
