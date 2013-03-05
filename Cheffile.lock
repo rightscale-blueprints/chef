@@ -2,7 +2,7 @@ GIT
   remote: https://github.com/flaccid/cookbooks
   path: cookbooks/chef
   ref: master
-  sha: ad6ff8419b236c932661c9e28a5c466021a008c0
+  sha: d4fd6d400215039f07e9fcf924c2145552eef181
   specs:
     chef (0.1.0)
 

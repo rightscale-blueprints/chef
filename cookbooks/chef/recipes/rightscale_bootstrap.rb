@@ -1,5 +1,5 @@
 # Cookbook Name:: chef
-# Recipe:: install
+# Recipe:: rightscale_bootstrap
 #
 # Copyright 2013, Chris Fordham
 #
@@ -15,21 +15,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-p = package 'curl' do
-   action :nothing
-end
-p.run_action(:install)
-
-p = package 'bash' do
-   action :nothing
-end
-p.run_action(:install)
-
-case node['chef']['install_method']
-when "omnibus"
-  execute "install_chef_with_omnibus_installer" do
-    command "curl -L https://www.opscode.com/chef/install.sh -v #{node['chef']['version']} | sudo bash"
-  end
-when "package"
-  log "TODO: install by package."
-end
+include_recipe "chef"
+include_recipe "chef::configure_chef_solo"
+include_recipe "chef::run_chef_solo"
