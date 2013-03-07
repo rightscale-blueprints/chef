@@ -7,3 +7,8 @@ cookbook 'chef',
    :git => 'https://github.com/flaccid/cookbooks',
    :path => 'cookbooks/chef',
    :ref => 'master'
+  
+cookbook 'rest_connection',
+   :git => 'https://github.com/flaccid/cookbooks',
+   :path => 'cookbooks/rest_connection',
+   :ref => 'master'

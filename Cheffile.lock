@@ -2,10 +2,19 @@ GIT
   remote: https://github.com/flaccid/cookbooks
   path: cookbooks/chef
   ref: master
-  sha: 5c88f17138e73fbb42cfee96aa52b3f4497f4418
+  sha: 65ef2d777b14bbc0ca667fd56d95e115e32310cc
   specs:
     chef (0.1.0)
 
+GIT
+  remote: https://github.com/flaccid/cookbooks
+  path: cookbooks/rest_connection
+  ref: master
+  sha: 5c88f17138e73fbb42cfee96aa52b3f4497f4418
+  specs:
+    rest_connection (0.0.1)
+
 DEPENDENCIES
   chef (>= 0)
+  rest_connection (>= 0)
 

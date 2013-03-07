@@ -62,6 +62,36 @@
       "type": "string",
       "required": "optional"
     },
+    "chef/dump_attributes": {
+      "display_name": "Chef dump attributes",
+      "description": "Whether to dump attributes to a local file.",
+      "default": "false",
+      "recipes": [
+        "chef::dump_attributes"
+      ],
+      "choice": [
+        "true",
+        "false"
+      ],
+      "calculated": false,
+      "type": "string",
+      "required": "optional"
+    },
+    "chef/dump/run_list": {
+      "display_name": "Chef dump run list",
+      "description": "Whether to include the run_list in the attributes dump.",
+      "default": "true",
+      "recipes": [
+        "chef::dump_attributes"
+      ],
+      "choice": [
+        "true",
+        "false"
+      ],
+      "calculated": false,
+      "type": "string",
+      "required": "optional"
+    },
     "chef/parent": {
       "display_name": "Chef parent",
       "description": "The Chef platform this cookbook is used in.",
@@ -142,6 +172,7 @@
   },
   "recipes": {
     "chef::default": "Includes the chef::install recipe.",
+    "chef::dump_attributes": "Dumps attributes of the current Chef run to a local file.",
     "chef::install": "Installs Chef by the desired install method (default=omnibus).",
     "chef::configure_chef_solo": "Configures Chef Solo.",
     "chef::rightscale_bootstrap": "Bootstraps and runs Chef Solo on a RightScale Server.",
