@@ -1,33 +1,128 @@
 {
-  "name": "chef",
-  "description": "Installs/Configures chef",
-  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
-  "maintainer": "Chris Fordham",
-  "maintainer_email": "chris@xhost.com.au",
-  "license": "Apache 2.0",
-  "platforms": {
-  },
   "dependencies": {
-  },
-  "recommendations": {
-  },
-  "suggestions": {
-  },
-  "conflicting": {
-  },
-  "providing": {
   },
   "replacing": {
   },
+  "conflicting": {
+  },
+  "license": "Apache 2.0",
+  "groupings": {
+  },
+  "suggestions": {
+  },
+  "maintainer": "Chris Fordham",
+  "version": "0.1.0",
+  "providing": {
+  },
   "attributes": {
-    "chef/version": {
-      "display_name": "Chef version",
-      "description": "The Chef version to install.",
-      "default": "10.24.0-1",
+    "chef/parent": {
+      "calculated": false,
+      "default": "vagrant",
+      "choice": [
+        "rightscale",
+        "vagrant"
+      ],
+      "type": "string",
+      "display_name": "Chef parent",
       "recipes": [
         "chef::default",
-        "chef::install"
+        "chef::configure_chef_solo"
       ],
+      "description": "The Chef platform this cookbook is used in.",
+      "required": "optional"
+    },
+    "chef/solo/config_file": {
+      "calculated": false,
+      "default": "/etc/chef/solo.rb",
+      "choice": [
+
+      ],
+      "type": "string",
+      "display_name": "Chef Solo configuration file",
+      "recipes": [
+        "chef::configure_chef_solo"
+      ],
+      "description": "The Chef Solo configuration file aka solo.rb.",
+      "required": "optional"
+    },
+    "chef/solo/json_attribs_file": {
+      "calculated": false,
+      "default": "/etc/chef/node.json",
+      "choice": [
+
+      ],
+      "type": "string",
+      "display_name": "Chef JSON file",
+      "recipes": [
+        "chef::configure_chef_solo"
+      ],
+      "description": "The Chef JSON file for use with solo.rb.",
+      "required": "optional"
+    },
+    "chef/dump/run_list": {
+      "calculated": false,
+      "default": "true",
+      "choice": [
+        "true",
+        "false"
+      ],
+      "type": "string",
+      "display_name": "Chef dump run list",
+      "recipes": [
+        "chef::dump_attributes"
+      ],
+      "description": "Whether to include the run_list in the attributes dump.",
+      "required": "optional"
+    },
+    "chef/solo/json": {
+      "calculated": false,
+      "choice": [
+
+      ],
+      "type": "string",
+      "display_name": "Chef JSON merge",
+      "recipes": [
+        "chef::configure_chef_solo",
+        "chef::run_chef_solo"
+      ],
+      "description": "Chef JSON to use/merge",
+      "required": "optional"
+    },
+    "chef/solo/cookbook_path": {
+      "calculated": false,
+      "default": [
+        "/var/chef/cookbooks",
+        "/var/chef/site-cookbooks"
+      ],
+      "choice": [
+
+      ],
+      "type": "array",
+      "display_name": "Chef Solo cookbook path",
+      "recipes": [
+        "chef::configure_chef_solo"
+      ],
+      "description": "The Chef Solo cookbook path for use with solo.rb.",
+      "required": "optional"
+    },
+    "chef/dump_attributes": {
+      "calculated": false,
+      "default": "false",
+      "choice": [
+        "true",
+        "false"
+      ],
+      "type": "string",
+      "display_name": "Chef dump attributes",
+      "recipes": [
+        "chef::dump_attributes"
+      ],
+      "description": "Whether to dump attributes to a local file.",
+      "required": "optional"
+    },
+    "chef/version": {
+      "calculated": false,
+      "default": "10.24.0-1",
       "choice": [
         "10.16.4-1",
         "10.16.4-2",
@@ -42,141 +137,46 @@
         "11.2.0-1",
         "11.4.0-1"
       ],
-      "calculated": false,
       "type": "string",
-      "required": "optional"
-    },
-    "chef/install_method": {
-      "display_name": "Chef install method",
-      "description": "The method to install Chef with (omnibus or package).",
-      "default": "omnibus",
+      "display_name": "Chef version",
       "recipes": [
         "chef::default",
         "chef::install"
       ],
+      "description": "The Chef version to install.",
+      "required": "optional"
+    },
+    "chef/install_method": {
+      "calculated": false,
+      "default": "omnibus",
       "choice": [
         "omnibus",
         "package"
       ],
-      "calculated": false,
       "type": "string",
-      "required": "optional"
-    },
-    "chef/dump_attributes": {
-      "display_name": "Chef dump attributes",
-      "description": "Whether to dump attributes to a local file.",
-      "default": "false",
-      "recipes": [
-        "chef::dump_attributes"
-      ],
-      "choice": [
-        "true",
-        "false"
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional"
-    },
-    "chef/dump/run_list": {
-      "display_name": "Chef dump run list",
-      "description": "Whether to include the run_list in the attributes dump.",
-      "default": "true",
-      "recipes": [
-        "chef::dump_attributes"
-      ],
-      "choice": [
-        "true",
-        "false"
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional"
-    },
-    "chef/parent": {
-      "display_name": "Chef parent",
-      "description": "The Chef platform this cookbook is used in.",
-      "default": "vagrant",
-      "choice": [
-        "rightscale",
-        "vagrant"
-      ],
+      "display_name": "Chef install method",
       "recipes": [
         "chef::default",
-        "chef::configure_chef_solo"
+        "chef::install"
       ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional"
-    },
-    "chef/solo/config_file": {
-      "display_name": "Chef Solo configuration file",
-      "description": "The Chef Solo configuration file aka solo.rb.",
-      "default": "/etc/chef/solo.rb",
-      "recipes": [
-        "chef::configure_chef_solo"
-      ],
-      "choice": [
-
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional"
-    },
-    "chef/solo/cookbook_path": {
-      "display_name": "Chef Solo cookbook path",
-      "description": "The Chef Solo cookbook path for use with solo.rb.",
-      "type": "array",
-      "default": [
-        "/var/chef/cookbooks",
-        "/var/chef/site-cookbooks"
-      ],
-      "recipes": [
-        "chef::configure_chef_solo"
-      ],
-      "choice": [
-
-      ],
-      "calculated": false,
-      "required": "optional"
-    },
-    "chef/solo/json_attribs_file": {
-      "display_name": "Chef JSON file",
-      "description": "The Chef JSON file for use with solo.rb.",
-      "default": "/etc/chef/node.json",
-      "recipes": [
-        "chef::configure_chef_solo"
-      ],
-      "choice": [
-
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional"
-    },
-    "chef/solo/json": {
-      "display_name": "Chef JSON merge",
-      "description": "Chef JSON to use/merge",
-      "recipes": [
-        "chef::configure_chef_solo",
-        "chef::run_chef_solo"
-      ],
-      "choice": [
-
-      ],
-      "calculated": false,
-      "type": "string",
+      "description": "The method to install Chef with (omnibus or package).",
       "required": "optional"
     }
   },
-  "groupings": {
+  "platforms": {
   },
   "recipes": {
-    "chef::default": "Includes the chef::install recipe.",
+    "chef::configure_chef_solo": "Configures Chef Solo.",
     "chef::dump_attributes": "Dumps attributes of the current Chef run to a local file.",
     "chef::install": "Installs Chef by the desired install method (default=omnibus).",
-    "chef::configure_chef_solo": "Configures Chef Solo.",
-    "chef::rightscale_bootstrap": "Bootstraps and runs Chef Solo on a RightScale Server.",
-    "chef::run_chef_solo": "Runs Chef Solo."
+    "chef::default": "Includes the chef::install recipe.",
+    "chef::run_chef_solo": "Runs Chef Solo.",
+    "chef::rightscale_bootstrap": "Bootstraps and runs Chef Solo on a RightScale Server."
   },
-  "version": "0.1.0"
+  "recommendations": {
+  },
+  "description": "Installs/Configures chef",
+  "maintainer_email": "chris@xhost.com.au",
+  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
+  "name": "chef"
 }
